@@ -1,3 +1,6 @@
+import { resolve } from 'path';
+import webpack from 'webpack';
+
 module.exports = {
   build: {
     babel: {
@@ -7,11 +10,25 @@ module.exports = {
     extend (config, { isClient }) {
       // Extend only webpack config for client-bundle
       
-      if (isClient) {
-        config.devtool = 'eval-source-map'
-      }
+      // if (isClient) {
+      //   config.devtool = 'eval-source-map'
+      // }
+
+      config.resolve.alias['~src'] = resolve(__dirname, 'src');
+      config.resolve.alias['~client'] = resolve(__dirname, 'src', 'client');
+      config.resolve.alias['~components'] = resolve(__dirname, 'src', 'client', 'components');
     },
-    vendor: ['graphql-tag', 'apollo-client']
+    plugins: [
+      new webpack.ProvidePlugin({
+        jQuery: 'jquery',
+        $: 'jquery',
+        jquery: 'jquery',
+        'window.jQuery': 'jquery'
+        //'_': 'lodash'
+        // ...etc.
+      })
+    ],
+    vendor: ['graphql-tag', 'apollo-client', 'jquery']
   },
   
   env: {
@@ -22,6 +39,8 @@ module.exports = {
     color: 'purple'
   },
   plugins: [
+    { src: '~plugins/bulma' },
+    { src: '~plugins/font-awesome' },
     { src: '~plugins/apollo' }
   ]
 };

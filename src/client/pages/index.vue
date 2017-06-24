@@ -4,7 +4,6 @@
     <ul>
       <li v-for="user in allUsers">{{user.name}}</li>
     </ul>
-    <nuxt-link to="/about">About page</nuxt-link>
   </div>
 </template>
 
