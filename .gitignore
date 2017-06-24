@@ -33,3 +33,7 @@ data/
 # Nuxt
 .nuxt/
 dist/
+
+yarn.lock
+package.lock
+package.lock.json
