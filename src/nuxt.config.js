@@ -15,6 +15,9 @@ module.exports = {
     linkActiveClass: 'is-active',
     //exactActiveClass: 'is-active'
   },
+//   css: [
+//       { src: '~assets/global.styl', lang='stylus' }
+//   ],
   build: {
     babel: {
       presets: ['es2015', 'stage-0'],
@@ -31,6 +34,12 @@ module.exports = {
       config.resolve.alias['~client'] = resolve(__dirname, 'client');
       config.resolve.alias['~components'] = resolve(__dirname, 'client', 'components');
     },
+    // loaders: [
+    //     {
+    //         test: /\.s[a|c]ss$/,
+    //         loader: 'style!css!sass'
+    //     }
+    // ],
     plugins: [
       new webpack.ProvidePlugin({
         jQuery: 'jquery',

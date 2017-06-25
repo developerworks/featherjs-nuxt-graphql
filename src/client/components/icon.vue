@@ -1,7 +1,7 @@
 <template>
-    <span class="icon">
-        <i :class="name"></i>
-    </span>
+    <div>
+        <i :class="name"></i> &nbsp; <slot></slot>
+    </div>
 </template>
 
 <script>

@@ -16,7 +16,7 @@
   "scripts": {
     "test": "npm run jshint && npm run mocha",
     "jshint": "jshint src/. test/. --config",
-    "dev": "DEBUG=nuxt:* nodemon --watch src/nuxt.config.js --watch src/server/ --watch src/config/ --exec babel-node src/server/index.js",
+    "dev": "DEBUG=nuxt:* nodemon --watch src --ignore src/client --exec babel-node src/server/index.js",
     "build": "nuxt build",
     "start": "NODE_ENV=production babel-node src/server/"
   },
@@ -42,6 +42,7 @@
     "graphql": "^0.10.3",
     "graphql-server-express": "^0.9.0",
     "graphql-tools": "^1.0.0",
+    "hover.css": "^2.2.0",
     "isomorphic-fetch": "^2.2.1",
     "jquery": "^3.2.1",
     "nedb": "^1.8.0",
@@ -55,7 +56,11 @@
     "babel-preset-stage-0": "^6.24.1",
     "jshint": "^2.9.4",
     "mocha": "^3.2.0",
+    "node-sass": "^4.5.3",
     "nodemon": "^1.11.0",
-    "request": "^2.79.0"
+    "request": "^2.79.0",
+    "sass-loader": "^6.0.6",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.1"
   }
 }

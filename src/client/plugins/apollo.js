@@ -1,6 +1,7 @@
 import Vue from 'vue';
-import { ApolloClient, createNetworkInterface } from 'apollo-client'
-import 'isomorphic-fetch'
+import { ApolloClient, createNetworkInterface } from 'apollo-client';
+import 'isomorphic-fetch';
+import gql from 'graphql-tag';
 
 // Created with Graphcool - https://www.graph.cool/
 //const API_ENDPOINT = 'https://api.graph.cool/simple/v1/cj1dqiyvqqnmj0113yuqamkuu'
@@ -13,6 +14,6 @@ const apolloClient = new ApolloClient({
     uri: API_ENDPOINT,
     transportBatching: true
   })
-})
+});
 
-export default apolloClient
+export default apolloClient;

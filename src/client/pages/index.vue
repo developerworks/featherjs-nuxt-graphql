@@ -1,20 +1,59 @@
 <template>
 
-    <div class="tile is-parent">
-        <div class="tile is-child box">
+        <div class="box">
 
-            <p class="title">Three</p>
+            <article v-for="i in 5" class="media">
+              <div class="media-left">
+                <figure class="image is-128x128">
+                  <img src="http://placehold.it/128x128" alt="Image">
+                </figure>
+              </div>
+              <div class="media-content">
+                <div class="content">
+                  <p>
+                    <strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia, ipsam.</strong> <small style="float:right;">31m</small>
+                    <br>
+                    <small>@johnsmith</small> 
+                    <br/>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+                  </p>
+                </div>
+                <nav class="level">
+                  <div class="level-left">
+                    <a class="level-item">
+                      <span class="icon is-small"><i class="fa fa-reply"></i></span>
+                    </a>
+                    <a class="level-item">
+                      <span class="icon is-small"><i class="fa fa-retweet"></i></span>
+                    </a>
+                    <a class="level-item">
+                      <span class="icon is-small"><i class="fa fa-heart"></i></span>
+                    </a>
+                  </div>
+                </nav>
+              </div>
+            </article>
 
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper diam at erat pulvinar, at pulvinar felis blandit. Vestibulum volutpat tellus diam, consequat gravida libero rhoncus ut. Morbi maximus, leo sit amet vehicula eleifend, nunc dui porta orci, quis semper odio felis ut quam.</p>
-            <p>Suspendisse varius ligula in molestie lacinia. Maecenas varius eget ligula a sagittis. Pellentesque interdum, nisl nec interdum maximus, augue diam porttitor lorem, et sollicitudin felis neque sit amet erat. Maecenas imperdiet felis nisi, fringilla luctus felis hendrerit sit amet. Aenean vitae gravida diam, finibus dignissim turpis. Sed eget varius ligula, at volutpat tortor.</p>
-            <p>Integer sollicitudin, tortor a mattis commodo, velit urna rhoncus erat, vitae congue lectus dolor consequat libero. Donec leo ligula, maximus et pellentesque sed, gravida a metus. Cras ullamcorper a nunc ac porta. Aliquam ut aliquet lacus, quis faucibus libero. Quisque non semper leo.</p>
+            <hr>
             
-            <ul>
-                <li v-for="user in allUsers">{{user.name}}</li>
-            </ul>
+            <nav class="pagination">
+                <a class="pagination-previous" title="This is the first page" disabled>Previous</a>
+                <a class="pagination-next">Next page</a>
+                <ul class="pagination-list">
+                    <li>
+                    <a class="pagination-link is-current">1</a>
+                    </li>
+                    <li>
+                    <a class="pagination-link">2</a>
+                    </li>
+                    <li>
+                    <a class="pagination-link">3</a>
+                    </li>
+                </ul>
+            </nav>
+
             
         </div>
-    </div>
 
 </template>
 
@@ -24,21 +63,30 @@
 
   export default {
 
-    async asyncData() {
+    async asyncData({ store }) {
 
         let { data } = await client.query({
-          query: gql`
-            query {
-              allUsers {
-                name,
-                email
-              }
-            }
-          `
+            query: gql`
+                query {
+                    allUsers {
+                        name,
+                        email
+                    },
+
+                    allTags {
+                        name,
+                        slug
+                    }
+                }
+            `
         });
 
+        store.commit('tags/set', data.allTags);
+
+        //console.log(context);
+
         return {
-          allUsers: data.allUsers
+          allUsers: data.allUsers,
         }
     },
 

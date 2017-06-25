@@ -1,12 +1,20 @@
 <template>
     <div class="layout">
         <Navbar />
-        <main class="container content">
-            <div class="tile is-ancestor">
-                <Sidebar />
-                <nuxt />
+        <section class="section main">
+            <div class="container">
+
+                <div class="columns">
+                    <div class="column is-3">
+                        <Sidebar />
+                    </div>
+                    <div class="column">
+                        <nuxt />
+                    </div>
+                </div>
+
             </div>
-        </main>
+        </section>
         <MainFooter />
     </div>
 </template>
@@ -30,8 +38,8 @@
         min-height: 100vh;
         flex-direction: column;
     }
-    .content {
+    .main {
         flex: 1;
-        margin-top: 25px;
+        
     }
 </style>
