@@ -2,10 +2,7 @@
     <div class="layout">
         <Navbar />
         <main class="container content">
-            <div class="tile is-ancestor">
-                <Sidebar />
-                <nuxt />
-            </div>
+            <nuxt />
         </main>
         <MainFooter />
     </div>
@@ -14,12 +11,10 @@
 <script>
     import Navbar from '~components/navbar';
     import MainFooter from '~components/footer';
-    import Sidebar from '~components/sidebar';
     export default {
         components: {
             Navbar,
             MainFooter,
-            Sidebar,
         }
     }
 </script>

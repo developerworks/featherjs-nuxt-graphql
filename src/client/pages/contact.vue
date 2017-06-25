@@ -6,10 +6,18 @@
 
 <script>
 export default {
-  asyncData ({ req, isServer }) {
-    return {
-      name: req ? 'server' : 'client'
-    }
+  asyncData (context) {
+    console.log(context);
+    // return {
+    //   name: req ? 'server' : 'client'
+    // }
+  },
+
+  head() {
+      return {
+          title: 'Contact',
+      }
   }
+
 }
 </script>

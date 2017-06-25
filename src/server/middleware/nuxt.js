@@ -4,7 +4,7 @@ const Nuxt = require('nuxt');
 // Setup nuxt.js
 let config = {};
 try {
-  config = require('../../../nuxt.config.js');
+  config = require('../../nuxt.config.js');
 } catch (e) {}
 config.rootDir = resolve(__dirname, '..', '..', '..');
 config.srcDir = resolve(__dirname, '..', '..', 'client');

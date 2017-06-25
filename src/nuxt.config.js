@@ -2,6 +2,19 @@ import { resolve } from 'path';
 import webpack from 'webpack';
 
 module.exports = {
+  head: {
+    title: 'Home', // Default title.
+    titleTemplate: '%s - Right Mindfulness Blog',
+    meta: [
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { hid: 'description', name: 'description', content: 'Ideas Blog - An open source blog written by NuxtJS' }
+    ]
+  },
+  router: {
+    linkActiveClass: 'is-active',
+    //exactActiveClass: 'is-active'
+  },
   build: {
     babel: {
       presets: ['es2015', 'stage-0'],
@@ -14,9 +27,9 @@ module.exports = {
       //   config.devtool = 'eval-source-map'
       // }
 
-      config.resolve.alias['~src'] = resolve(__dirname, 'src');
-      config.resolve.alias['~client'] = resolve(__dirname, 'src', 'client');
-      config.resolve.alias['~components'] = resolve(__dirname, 'src', 'client', 'components');
+      config.resolve.alias['~src'] = resolve(__dirname);
+      config.resolve.alias['~client'] = resolve(__dirname, 'client');
+      config.resolve.alias['~components'] = resolve(__dirname, 'client', 'components');
     },
     plugins: [
       new webpack.ProvidePlugin({

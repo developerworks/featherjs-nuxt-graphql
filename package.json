@@ -16,7 +16,7 @@
   "scripts": {
     "test": "npm run jshint && npm run mocha",
     "jshint": "jshint src/. test/. --config",
-    "dev": "DEBUG=nuxt:* nodemon --watch src/server/ --watch src/config/ --exec babel-node src/server/index.js",
+    "dev": "DEBUG=nuxt:* nodemon --watch src/nuxt.config.js --watch src/server/ --watch src/config/ --exec babel-node src/server/index.js",
     "build": "nuxt build",
     "start": "NODE_ENV=production babel-node src/server/"
   },
